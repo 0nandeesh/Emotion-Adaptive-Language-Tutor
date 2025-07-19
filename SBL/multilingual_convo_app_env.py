@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 client = Groq(api_key=st.secrets["GROQ_API_KEY"])
 
 
+
 # Streamlit page configuration
 st.set_page_config(page_title="Emotion-Adaptive Language Tutor", layout="wide")
 
