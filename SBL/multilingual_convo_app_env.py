@@ -63,7 +63,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # UI Language Switcher
-ui_language = st.selectbox("🌍 Interface Language", ["English", "Kannada", "Hindi", "Spanish"])
+ui_language = st.selectbox(" Interface Language", ["English", "Kannada", "Hindi", "Spanish"])
 
 def translate(text):
     translations = {
@@ -102,12 +102,12 @@ def translate(text):
 col1, col2 = st.columns([1, 2])
 
 with col1:
-    scenario = st.text_area(f"✍️ {translate('Enter Scenario')}", "At the airport")
-    language = st.selectbox(f"🌐 {translate('Select Conversation Language')}", ["English", "French", "Spanish", "German", "Kannada", "Japanese"])
-    user_role = st.text_input(f"👋 {translate('Your Role')}", "Traveler")
-    bot_role = st.text_input(f"💼 {translate('Other Role')}", "Airport Staff")
-    turns = st.slider(f"🔄 {translate('Conversation Turns')}", min_value=4, max_value=12, value=6)
-    mood = st.selectbox(f"🎭 {translate('How are you feeling today?')}", ["Confused", "Curious", "Confident"])
+    scenario = st.text_area(f" {translate('Enter Scenario')}", "At the airport")
+    language = st.selectbox(f" {translate('Select Conversation Language')}", ["English", "French", "Spanish", "German", "Kannada", "Japanese"])
+    user_role = st.text_input(f" {translate('Your Role')}", "Traveler")
+    bot_role = st.text_input(f" {translate('Other Role')}", "Airport Staff")
+    turns = st.slider(f" {translate('Conversation Turns')}", min_value=4, max_value=12, value=6)
+    mood = st.selectbox(f" {translate('How are you feeling today?')}", ["Confused", "Curious", "Confident"])
 
 latency = 0.0
 num_tokens_used = 0
@@ -220,15 +220,15 @@ Conversation:
         return f"Error: {e}"
 
 with col2:
-    if st.button(f"🌯️ {translate('Generate Conversation and Grammar Help')}"):
+    if st.button(f"{translate('Generate Conversation and Grammar Help')}"):
         with st.spinner("Generating conversation..."):
             conversation = generate_conversation()
-            st.markdown("### 💬 Generated Conversation")
+            st.markdown(" Generated Conversation")
             st.markdown(render_avatar_conversation(conversation), unsafe_allow_html=True)
 
         with st.spinner("Analyzing for grammar and expressions..."):
             tips = generate_grammar_tips(conversation)
-            st.markdown("### 🧠 Grammar & Cultural Notes")
+            st.markdown(" Grammar & Cultural Notes")
             st.text_area("Explanation", value=tips, height=400)
 
         with st.spinner("Detecting named entities..."):
@@ -246,19 +246,19 @@ with col2:
 
         st.markdown("""
         <div class="metrics-box">
-        ⏱️ <strong>Response Time:</strong> {:.2f} seconds<br>
-        📊 <strong>Total Tokens Used:</strong> {}<br>
-        ✅ <strong>Estimated Accuracy:</strong> {}%
+         <strong>Response Time:</strong> {:.2f} seconds<br>
+         <strong>Total Tokens Used:</strong> {}<br>
+         <strong>Estimated Accuracy:</strong> {}%
         </div>
         """.format(latency, num_tokens_used, accuracy_percent), unsafe_allow_html=True)
 
         # Visualize metrics
-        st.markdown("### 📈 Performance Metrics Over Time")
+        st.markdown("###  Performance Metrics Over Time")
         if len(st.session_state.metrics_log) > 1:
             df = pd.DataFrame(st.session_state.metrics_log)
             st.line_chart(df.set_index("Time"))
 
 st.markdown("---")
 st.markdown("Created with 💡 using Groq LLaMA-4 and Streamlit for emotion-aware language learning.")
-st.markdown("© 2023 Your Name. All rights reserved.")
+
 # Footer
